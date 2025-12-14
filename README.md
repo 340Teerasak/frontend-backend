@@ -1,8 +1,8 @@
 # Lab 2.1 – Full-Stack Web Application
 
 รายวิชา: Web Application Development
-ผู้พัฒนา: (ชื่อ – รหัสนักศึกษา)
-Repository: (แนบลิงก์ GitHub)
+ผู้พัฒนา: นายธีรศักดิ์ แก้วภา
+Repository: (https://github.com/340Teerasak/frontend-backend.git)
 
 ---
 
