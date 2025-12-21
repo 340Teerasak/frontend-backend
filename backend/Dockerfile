@@ -1,5 +1,5 @@
-# Build stage
-FROM node:20-alpine AS builder
+FROM node:20-alpine
+
 WORKDIR /app
 
 COPY package*.json ./
@@ -7,16 +7,8 @@ RUN npm ci
 
 COPY . .
 
-# Run stage
-FROM node:20-alpine
-WORKDIR /app
-
-COPY --from=builder /app /app
-
-RUN mkdir -p logs
-
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost:3000/api/demo || exit 1
+RUN DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy" npx prisma generate
+RUN npm run build
 
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
